@@ -1,0 +1,6 @@
+lastpass
+microsoft-office
+virtualbox
+oracle-jdk
+oracle-jdk-javadoc
+zoomus
