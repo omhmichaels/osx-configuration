@@ -1,15 +1,14 @@
-REPO="https://github.com/omhmichaels/osx-configuration.git"
+REPO='osx-configuration'
+REPO_PATH="https://github.com/omhmichaels/${REPO}.git"
 
 .PHONY: setup
 setup: 
-	bash "bin/install-homebrew.sh" && brew install git
+	/bin/bash -c '$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)';
+	git clone "${REPO_PATH}" && cd "${REPO}";
+	chmod 755 -R bin/*;
 
 .PHONY: minimal
-minimal:
-	git clone "${REPO}" && cd "${REPO}";
-	bash "bin/install-apps.sh"
-
-.PHONY: tweak
-tweak: 
-	bash "bin/tweak-macos.sh"
-
+minimal: setup
+	bin/install-apps.sh;
+	bin/install-casks.sh;
+	bin/tweak-macos.sh;

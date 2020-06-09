@@ -1,6 +1,6 @@
-function install_apps(){
+function install_casks(){
         # Path to pkg list
-        apps="config/apps.txt"
+        apps="config/casks.txt"
 
         # Check contents
         echo ----------------
@@ -11,7 +11,7 @@ function install_apps(){
         while read app;
         do
                 printf "\nAPPLICATION TO INSTALL:\n\t $app\n----------------\n\n";
-                brew  install $app  && printf "\nINSTALLED $app\n\n--------------\n" || "\nERROR: INSTALLATION OF $app FAILED\n---------------------\n";
+                brew cask install $app  && printf "\nINSTALLED $app\n\n--------------\n" || "\nERROR: INSTALLATION OF $app FAILED\n---------------------\n";
         done<<<$(cat $apps)
 
 
@@ -19,4 +19,4 @@ function install_apps(){
 
 
 
-install_apps;
+install_casks;
